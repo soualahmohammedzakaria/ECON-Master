@@ -11,22 +11,22 @@
     padding: 10px 25px;
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Add transition for hover effect */
+    transition: background-color 0.3s;
     font-family: "Poppins", sans-serif;
   }
   
   .submit-button:hover {
-    background-color: var(--third-color); /* Change color on hover */
+    background-color: var(--third-color);
   }
   
   .submit-button:disabled {
-    background-color: #ccc; /* Style for disabled state */
-    cursor: not-allowed; /* Change cursor for disabled state */
+    background-color: #ccc;
+    cursor: not-allowed;
   }
   
   h3, h4 {
@@ -97,4 +97,31 @@
   .exam-box {
     padding: 2.5rem;
   }
-  
+
+input[type="checkbox"] {
+  /* Remove default checkbox styling */
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #757187; /* fallback color */
+  border-radius: 4px;
+  display: inline-flex; /* Use flex to center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  vertical-align: middle;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  font-size: 12px;
+  color: var(--white-color);
+  display: inline-block;
+}

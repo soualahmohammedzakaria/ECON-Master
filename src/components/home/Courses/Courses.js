@@ -2,8 +2,13 @@ import React from 'react';
 import SectionTitle from '../../general/SectionTitle/SectionTitle';
 import './Courses.css';
 import { courses } from '../../../data/Courses';
+import { useNavigate } from 'react-router-dom';
 
 export default function Courses() {
+  const navigate = useNavigate();
+  const handleTestSelection = (chapter_number) => () => {
+    navigate(`/exam/ch${chapter_number}/10/Chapter One Test/4`);
+  };
 
   return (
     <section id="courses" className="courses-section">
@@ -31,7 +36,7 @@ export default function Courses() {
             </div>
             <button
               className="test-button"
-              onClick={() => window.location.href = course.test_link}
+              onClick={handleTestSelection(index + 1)}
             >
               Pass the Chapter Test
             </button>

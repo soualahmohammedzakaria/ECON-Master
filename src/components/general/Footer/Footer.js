@@ -8,6 +8,7 @@ import ESILogo from '../../../assets/images/ESI-Logo.png';
 export default function Footer() {
     return (
         <footer className="footer">
+            <p><b>&copy; {new Date().getFullYear()} ECON Master. All rights reserved.</b></p>
             <div className="footer-content">
                 <Link to="/" className="footer-logo-link">
                     <img src={Logo} alt="Site Logo" className="footer-logo" />
