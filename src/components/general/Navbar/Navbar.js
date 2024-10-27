@@ -22,7 +22,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <Link className="logo" to={"/"}>
+                <Link className="logo" to="/">
                     <img src={Logo} alt="ECON Master" className="logo-img" />
                     <span className="site-name">ECON Master</span>
                 </Link>

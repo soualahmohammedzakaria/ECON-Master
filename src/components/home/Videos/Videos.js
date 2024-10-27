@@ -29,8 +29,8 @@ export default function Videos() {
             {course.tutorials.map((video, index) => (
                 <button
                     key={index}
-                    className="video-link-button" // New test button
-                    onClick={window.open(video.link, '_blank')}
+                    className="video-link-button"
+                    onClick={() => window.open(video.link, '_blank')}
                 >
                     <MdSlowMotionVideo size={22} />
                     Tutorial {index + 1} ({video.professor})

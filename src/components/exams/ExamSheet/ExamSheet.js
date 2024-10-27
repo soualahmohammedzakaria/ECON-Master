@@ -5,7 +5,7 @@ import { questions } from '../../../data/Questions';
 const ExamSheet = ({ chapters, time, test, nbqsts }) => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(time * 60); // Convert minutes to seconds
-  const [grade, setGrade] = useState(null);
+  const [grade, setGrade] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Memoize chaptersArray to avoid recomputation
@@ -85,7 +85,7 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       let questionGrade = 0;
   
       selected.forEach(answerIndex => {
-        if (correctAnswers.includes(answerIndex)) {
+        if (!correctAnswers.includes(answerIndex)) {
           // Add portion for correct answer
           questionGrade += portionPerCorrectAnswer;
         } else {
@@ -95,7 +95,7 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       });
   
       // Ensure the question grade does not go below 0
-      questionGrade = Math.max(0, questionGrade);
+      if (questionGrade < 0) questionGrade = 0;
   
       // Add this question's grade to the total
       totalGrade += questionGrade;
