@@ -1,0 +1,73 @@
+/* Videos Section */
+.courses-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.course-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.course-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--white-color);
+}
+
+.video-link-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white-color);
+    padding: 0.6rem 0rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+    margin-top: 0.6rem;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.video-link-button:hover {
+    background-color: var(--third-color);
+}
+
+.video-section-title {
+    font-size: 1.3rem;
+    color: var(--white-color);
+}

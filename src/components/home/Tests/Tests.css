@@ -1,0 +1,69 @@
+/* Tests Section */
+.courses-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.course-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.course-card {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.course-name {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--white-color);
+}
+
+.course-description {
+    font-size: 1rem;
+    color: var(--white-color);
+    margin-bottom: 1.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.exam-button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white-color);
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+.exam-button:hover {
+    background-color: var(--third-color);
+}

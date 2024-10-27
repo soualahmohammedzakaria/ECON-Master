@@ -1,0 +1,40 @@
+/* Footer.css */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1.5rem;
+    text-align: center;
+    font-family: var(--font-family);
+    padding-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+    width: 50px;
+    height: auto;
+}
+
+.footer-link {
+    color: var(--white-color);
+    text-decoration: underline;
+}
+
+.footer-link:hover {
+    color: var(--secondary-color);
+}
+
+.footer-logo-link {
+    display: inline-block;
+}
+
+.footer-logo-link:hover {
+    opacity: 0.8;
+}

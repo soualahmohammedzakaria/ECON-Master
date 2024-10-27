@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+/* General */
+
+:root {
+  --primary-color: #18142c;
+  --secondary-color: #757187;
+  --third-color: #342c5e;
+  --white-color: white;
+  --black-color: black;
+  --font-family: "Poppins", sans-serif;
+  --border-radius: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--white-color);
+  color: var(--black-color);
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Tests Section */
+.tests-section {
+  padding: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.tests-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.chapter-tests, .exam-tests {
+  margin: 1rem 0;
+}
+
+.chapter-tests h3, .exam-tests h3 {
+  font-size: 1.4rem;
+}
+
+.chapter-tests ul, .exam-tests ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.chapter-tests li, .exam-tests li {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* Courses Section */
+
+
+.course-buttons button {
+  background-color: var(--primary-color);
   color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.course-buttons button:hover {
+  background-color: var(--black-color);
 }

@@ -1,0 +1,100 @@
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .submit-button {
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition for hover effect */
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .submit-button:hover {
+    background-color: var(--third-color); /* Change color on hover */
+  }
+  
+  .submit-button:disabled {
+    background-color: #ccc; /* Style for disabled state */
+    cursor: not-allowed; /* Change cursor for disabled state */
+  }
+  
+  h3, h4 {
+    margin: 0;
+  }
+
+  h2 {
+    color: var(--primary-color);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 4px;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .questions-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .question-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .answer-choices {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  
+  .grade-display {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .timer {
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .questions-section {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .question-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+  }
+
+  .exam-box {
+    padding: 2.5rem;
+  }
+  

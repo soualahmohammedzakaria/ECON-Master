@@ -1,0 +1,10 @@
+/* Section Title */
+.section-text-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.link-section-text-title:hover {
+  cursor: pointer;
+}
