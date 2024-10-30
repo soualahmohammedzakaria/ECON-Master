@@ -13,7 +13,7 @@ export const courses = {
     {
       title: "Chapter 2",
       name: "Overview of the Enterprise",
-      description: "Overview of the fundamental aspects of business operations.",
+      description: "Overview of the fundamental aspects of business operations at an enterprise.",
       chapter_link: "https://drive.google.com/drive/folders/1N01jXPqkL73faz2akOvvnEsB41F0sG1y?usp=drive_link",
       course_link: "https://drive.google.com/drive/folders/1JdtWCR1T2cLOhOmTdIywRX6-j4olza0Z?usp=drive_link",
       summary_link: "https://drive.google.com/drive/folders/1C-tsCNJHtyPTmZMGcBwaRIN3t2wGxEJu?usp=drive_link",

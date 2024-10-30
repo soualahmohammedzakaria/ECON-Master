@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SectionTitle from '../../general/SectionTitle/SectionTitle';
 import './Tests.css';
 import { examsTests } from '../../../data/ExamTests';
 import { useNavigate } from 'react-router-dom';
+import ChooseChapters from '../../exams/ChooseChapters/ChooseChapters';
 
-export default function Courses() {
+export default function Tests() {
   const navigate = useNavigate();
+  const [isChooseChaptersOpen, setIsChooseChaptersOpen] = useState(false);
+
   const handleTestSelection = (exam_type) => () => {
     if (exam_type === 'CI') {
       navigate(`/exam/ch1,ch2/10/Intermediate Control/4`);
@@ -13,8 +16,16 @@ export default function Courses() {
       navigate(`/exam/ch3,ch4,ch5/10/Final Control/4`);
     } else if (exam_type === 'CM') {
       navigate(`/exam/ch1,ch2,ch3,ch4,ch5/10/Mixed Control/4`);
+    } else if (exam_type === 'CP') {
+      setIsChooseChaptersOpen(true);
     }
   };
+
+  const handleChapterSelection = (selectedChapters) => {
+    const chaptersString = selectedChapters.join(',');
+    navigate(`/exam/${chaptersString}/10/Personalized Control/4`);
+  };
+
   return (
     <section id="tests" className="courses-section">
       <SectionTitle title="Exam Tests" />
@@ -33,6 +44,13 @@ export default function Courses() {
           </div>
         ))}
       </div>
+
+      {isChooseChaptersOpen && (
+        <ChooseChapters
+          onClose={() => setIsChooseChaptersOpen(false)}
+          onConfirm={handleChapterSelection}
+        />
+      )}
     </section>
   );
 }

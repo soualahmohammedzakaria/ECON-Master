@@ -14,7 +14,7 @@
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s;
     font-family: "Poppins", sans-serif;

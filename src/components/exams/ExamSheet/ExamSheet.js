@@ -1,12 +1,15 @@
+// ExamSheet.js
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import './ExamSheet.css';
-import { questions } from '../../../data/Questions';
+import { questions_FR } from '../../../data/Questions';
+import Modal from '../StartModal/StartModal';
 
 const ExamSheet = ({ chapters, time, test, nbqsts }) => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(time * 60); // Convert minutes to seconds
   const [grade, setGrade] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true); // Modal visibility state
 
   // Memoize chaptersArray to avoid recomputation
   const chaptersArray = useMemo(() => chapters.split(',').map(ch => ch.trim()), [chapters]);
@@ -14,15 +17,25 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
   // Ref to store the initial set of questions so they don't change on re-render
   const examQuestionsRef = useRef([]);
 
+  // Start the timer only after the modal is closed
+  useEffect(() => {
+    if (!isModalOpen && timeLeft > 0) {
+      const timer = setInterval(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearInterval(timer);
+    }
+  }, [timeLeft, isModalOpen]);
+
   // Select questions based on chapters only on the first render
   useEffect(() => {
     if (examQuestionsRef.current.length === 0) {
-      const filteredQuestions = questions.filter(q => chaptersArray.includes(q.chapter));
+      const filteredQuestions = questions_FR.filter(q => chaptersArray.includes(q.chapter));
       const questionsPerChapter = Math.ceil(nbqsts / chaptersArray.length);
-      
+
       // Group questions by chapter
       const questionsByChapter = chaptersArray.reduce((acc, chapter) => {
-        acc[chapter] = filteredQuestions.filter(q => q.chapter === chapter);
+        acc[chapter] = filteredQuestions
+          .filter(q => q.chapter === chapter)
+          .sort(() => 0.5 - Math.random()); // Randomize order of chapter questions
         return acc;
       }, {});
 
@@ -31,22 +44,21 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       chaptersArray.forEach(chapter => {
         const chapterQuestions = questionsByChapter[chapter] || [];
         const numberToSelect = Math.min(questionsPerChapter, chapterQuestions.length);
-        const randomQuestions = chapterQuestions.sort(() => 0.5 - Math.random()).slice(0, numberToSelect);
+        const randomQuestions = chapterQuestions.slice(0, numberToSelect);
         selectedQuestions.push(...randomQuestions);
       });
 
-      // Shuffle the selected questions only once and store them in ref
-      examQuestionsRef.current = selectedQuestions.sort(() => 0.5 - Math.random());
+      // Shuffle the order of selected questions and each question's options
+      examQuestionsRef.current = selectedQuestions
+        .sort(() => 0.5 - Math.random())
+        .map(question => ({
+          ...question,
+          options: question.options.sort(() => 0.5 - Math.random()), // Shuffle options
+        }));
+
       setSelectedAnswers(Array(examQuestionsRef.current.length).fill([])); // Initialize selected answers
     }
-  }, [chaptersArray, nbqsts]); // Memoized values prevent re-renders
-
-  // Timer logic
-  useEffect(() => {
-    if (timeLeft <= 0) return;
-    const timer = setInterval(() => setTimeLeft(timeLeft - 1), 1000);
-    return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [chaptersArray, nbqsts]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -73,17 +85,16 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
 
   const calculateGrade = () => {
     let totalGrade = 0;
-  
     examQuestionsRef.current.forEach((question, index) => {
       const correctAnswers = question.answers;
       const selected = selectedAnswers[index];
-  
+
       // Calculate the portion of the grade per correct answer
       const portionPerCorrectAnswer = 1 / correctAnswers.length;
-  
+
       // Track the grade for this specific question
       let questionGrade = 0;
-  
+
       selected.forEach(answerIndex => {
         if (!correctAnswers.includes(answerIndex)) {
           // Add portion for correct answer
@@ -93,18 +104,18 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
           questionGrade -= portionPerCorrectAnswer;
         }
       });
-  
+
       // Ensure the question grade does not go below 0
       if (questionGrade < 0) questionGrade = 0;
-  
+
       // Add this question's grade to the total
       totalGrade += questionGrade;
     });
-  
+
     // Scale total grade to be out of 20
     const gradeOutOf20 = (totalGrade / examQuestionsRef.current.length) * 20;
     setGrade(Number.isInteger(gradeOutOf20) ? gradeOutOf20 : gradeOutOf20.toFixed(2));
-  };  
+  };
 
   const handleSubmit = () => {
     calculateGrade();
@@ -113,6 +124,15 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
 
   return (
     <div className='exam-box'>
+      {isModalOpen && (
+        <Modal
+          testName={test}
+          time={time}
+          questionCount={nbqsts}
+          onClose={() => setIsModalOpen(false)} // Close modal and start test
+        />
+      )}
+      
       <div className="top-bar">
         <h2 className="timer">{test}</h2>
         <h2 className="timer">{formatTime(timeLeft)}</h2>
