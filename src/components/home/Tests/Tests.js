@@ -11,11 +11,11 @@ export default function Tests() {
 
   const handleTestSelection = (exam_type) => () => {
     if (exam_type === 'CI') {
-      navigate(`/exam/ch1,ch2/10/Intermediate Control/4`);
+      navigate(`/exam/ch1,ch2/30/Intermediate Control/36`);
     } else if (exam_type === 'CF') {
-      navigate(`/exam/ch3,ch4,ch5/10/Final Control/4`);
+      navigate(`/exam/ch3,ch4/30/Final Control/36`);
     } else if (exam_type === 'CM') {
-      navigate(`/exam/ch1,ch2,ch3,ch4,ch5/10/Mixed Control/4`);
+      navigate(`/exam/ch1,ch2,ch3,ch4/30/Mixed Control/36`);
     } else if (exam_type === 'CP') {
       setIsChooseChaptersOpen(true);
     }
@@ -23,7 +23,7 @@ export default function Tests() {
 
   const handleChapterSelection = (selectedChapters) => {
     const chaptersString = selectedChapters.join(',');
-    navigate(`/exam/${chaptersString}/10/Personalized Control/4`);
+    navigate(`/exam/${chaptersString}/30/Personalized Control/36`);
   };
 
   return (

@@ -27,6 +27,11 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
 
   // Select questions based on chapters only on the first render
   useEffect(() => {
+    console.log("Chapitre 1: " + questions_FR.filter(q => ["ch1"].includes(q.chapter)).length);
+    console.log("Chapitre 2: " + questions_FR.filter(q => ["ch2"].includes(q.chapter)).length);
+    console.log("Chapitre 3: " + questions_FR.filter(q => ["ch3"].includes(q.chapter)).length);
+    console.log("Chapitre 4: " + questions_FR.filter(q => ["ch4"].includes(q.chapter)).length);
+    console.log("--------------")
     if (examQuestionsRef.current.length === 0) {
       const filteredQuestions = questions_FR.filter(q => chaptersArray.includes(q.chapter));
       const questionsPerChapter = Math.ceil(nbqsts / chaptersArray.length);
@@ -96,7 +101,7 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       let questionGrade = 0;
 
       selected.forEach(answerIndex => {
-        if (!correctAnswers.includes(answerIndex)) {
+        if (correctAnswers.includes(answerIndex)) {
           // Add portion for correct answer
           questionGrade += portionPerCorrectAnswer;
         } else {

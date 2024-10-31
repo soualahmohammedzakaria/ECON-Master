@@ -15,7 +15,7 @@
     background-color: white;
     padding: 2rem;
     width: 90%;
-    max-width: 500px;
+    max-width: 520px;
     border-radius: var(--border-radius);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -41,7 +41,7 @@
   }
   
   .chapter-button {
-    padding: 0.5rem 1rem;
+    padding: 10px 1rem;
     border: none;
     color: white;
     cursor: pointer;
@@ -59,7 +59,7 @@
   }
   
   .modal-button {
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
     background-color: var(--primary-color);
     color: white;
     border: none;
