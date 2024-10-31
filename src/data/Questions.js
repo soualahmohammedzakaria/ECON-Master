@@ -1574,7 +1574,7 @@ export const questions_FR = [
     {
         question: "La méthode ABC a le même principe de la loi Pareto, sauf que la méthode ABC fait intervenir 4 groupes:",
         options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
+        answers: ["Faux"],
         chapter: "ch3"
     },
     {
@@ -1649,7 +1649,7 @@ export const questions_FR = [
         question: "Type de fabrication qui concerne les produits peu coûteux ou d’usage général qui sont fabriqués en grande quantité:",
         options: [
             "La fabrication pour stockage",
-            "La fabrication pour commande",
+            "La fabrication à la commande",
             "La fabrication mixte",
             "Aucune réponse"
         ],

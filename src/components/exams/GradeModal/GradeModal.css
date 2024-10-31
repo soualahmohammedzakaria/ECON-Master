@@ -1,0 +1,84 @@
+.grade-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .grade-modal-content {
+    background-color: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .circle-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circle-progress-inner {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .grade-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .total-grade {
+    font-size: 1rem;
+    color: grey;
+  }
+  
+  .focus-topics {
+    margin: 1rem 0;
+    color: var(--secondary-color);
+  }
+  
+  .view-correction-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-correction-button:hover {
+    background-color: var(--third-color);
+  }  
