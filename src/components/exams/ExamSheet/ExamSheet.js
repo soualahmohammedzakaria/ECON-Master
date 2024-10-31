@@ -31,7 +31,9 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
     console.log("Chapitre 2: " + questions_FR.filter(q => ["ch2"].includes(q.chapter)).length);
     console.log("Chapitre 3: " + questions_FR.filter(q => ["ch3"].includes(q.chapter)).length);
     console.log("Chapitre 4: " + questions_FR.filter(q => ["ch4"].includes(q.chapter)).length);
-    console.log("--------------")
+    console.log("--------------");
+    console.log(questions_FR.length);
+    console.log("--------------");
     if (examQuestionsRef.current.length === 0) {
       const filteredQuestions = questions_FR.filter(q => chaptersArray.includes(q.chapter));
       const questionsPerChapter = Math.ceil(nbqsts / chaptersArray.length);
@@ -71,22 +73,22 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  const handleCheckboxChange = (questionIndex, answerIndex) => {
+  const handleCheckboxChange = (questionIndex, answerText) => {
     setSelectedAnswers(prevAnswers => {
       const updatedAnswers = prevAnswers.map((answers, idx) => {
         if (idx === questionIndex) {
-          // Toggle selection for the specific answer
-          if (answers.includes(answerIndex)) {
-            return answers.filter(idx => idx !== answerIndex); // Deselect answer if already selected
+          // Toggle selection for the specific answer text
+          if (answers.includes(answerText)) {
+            return answers.filter(ans => ans !== answerText); // Deselect answer if already selected
           } else {
-            return [...answers, answerIndex]; // Select the new answer
+            return [...answers, answerText]; // Select the new answer text
           }
         }
         return answers;
       });
       return updatedAnswers;
     });
-  };
+  };  
 
   const calculateGrade = () => {
     let totalGrade = 0;
@@ -94,30 +96,21 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       const correctAnswers = question.answers;
       const selected = selectedAnswers[index];
 
-      // Calculate the portion of the grade per correct answer
       const portionPerCorrectAnswer = 1 / correctAnswers.length;
-
-      // Track the grade for this specific question
       let questionGrade = 0;
 
-      selected.forEach(answerIndex => {
-        if (correctAnswers.includes(answerIndex)) {
-          // Add portion for correct answer
+      selected.forEach(answerText => {
+        if (correctAnswers.includes(answerText)) {
           questionGrade += portionPerCorrectAnswer;
         } else {
-          // Subtract portion for incorrect answer
           questionGrade -= portionPerCorrectAnswer;
         }
       });
 
-      // Ensure the question grade does not go below 0
       if (questionGrade < 0) questionGrade = 0;
-
-      // Add this question's grade to the total
       totalGrade += questionGrade;
     });
 
-    // Scale total grade to be out of 20
     const gradeOutOf20 = (totalGrade / examQuestionsRef.current.length) * 20;
     setGrade(Number.isInteger(gradeOutOf20) ? gradeOutOf20 : gradeOutOf20.toFixed(2));
   };
@@ -148,17 +141,17 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
           <div key={questionIndex} className="question-card">
             <h4>{questionIndex + 1}) {questionData.question}</h4>
             <ul className="answer-choices">
-              {questionData.options.map((answer, answerIndex) => (
-                <li key={answerIndex}>
-                  <input
-                    type="checkbox"
-                    style={{ marginRight: '10px' }}
-                    checked={selectedAnswers[questionIndex]?.includes(answerIndex) || false}
-                    onChange={() => handleCheckboxChange(questionIndex, answerIndex)}
-                  />
-                  <strong>{String.fromCharCode(65 + answerIndex)})</strong> {answer}
-                </li>
-              ))}
+            {questionData.options.map((answer, answerIndex) => (
+              <li key={answerIndex}>
+                <input
+                  type="checkbox"
+                  style={{ marginRight: '10px' }}
+                  checked={selectedAnswers[questionIndex]?.includes(answer) || false}
+                  onChange={() => handleCheckboxChange(questionIndex, answer)}
+                />
+                <strong>{String.fromCharCode(65 + answerIndex)})</strong> {answer}
+              </li>
+            ))}
             </ul>
           </div>
         ))}

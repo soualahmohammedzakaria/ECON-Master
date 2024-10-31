@@ -935,12 +935,6 @@ export const questions_FR = [
         chapter: "ch2"
     },
     {
-        question: "Le déclenchement de l’étape suivante dans la production à flux poussés se fait par la disponibilité du produit en amont:",
-        options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
-        chapter: "ch3"
-    },
-    {
         question: "Le système de production décrit l’ensemble du processus grâce auquel l’entreprise produit un bien ou un service apte à satisfaire une demande à l’aide de facteurs de production acquis sur le marché:",
         options: ["Vrai", "Faux"],
         answers: ["Vrai"],
@@ -951,12 +945,6 @@ export const questions_FR = [
         options: ["Vrai", "Faux"],
         answers: ["Vrai"],
         chapter: "ch1"
-    },
-    {
-        question: "La fonction de production est uniquement l’activité de transformation des flux de matières premières et d’informations en produits finis grâce aux hommes et aux machines:",
-        options: ["Vrai", "Faux"],
-        answers: ["Faux"],
-        chapter: "ch3"
     },
     {
         question: "La veille est un outil de surveillance de l’environnement:",
@@ -989,12 +977,6 @@ export const questions_FR = [
         chapter: "ch2"
     },
     {
-        question: "L’approvisionnement est l’activité socialement organisée, destinée à créer des biens et des services à partir de facteurs de production acquis sur le marché:",
-        options: ["Vrai", "Faux"],
-        answers: ["Faux"],
-        chapter: "ch3"
-    },
-    {
         question: "L’entreprise est une entité économique fermée:",
         options: ["Vrai", "Faux"],
         answers: ["Faux"],
@@ -1011,12 +993,6 @@ export const questions_FR = [
         options: ["Vrai", "Faux"],
         answers: ["Faux"],
         chapter: "ch2"
-    },
-    {
-        question: "L’ordonnancement permet d’assurer la continuité des opérations et de produire les quantités désirées tout en minimisant les délais et en utilisant au mieux les moyens de production:",
-        options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
-        chapter: "ch3"
     },
     {
         question: "Le Micro environnement n’est pas propre à une entreprise, mais à un ensemble d’entreprises:",
@@ -1242,24 +1218,6 @@ export const questions_FR = [
         ],
         answers: ["Les cessions bail", "Un financement interne"],
         chapter: "ch4"
-    },
-    {
-        question: "Le système de production décrit l’ensemble du processus grâce auquel l’entreprise produit un bien ou un service apte à satisfaire une demande à l’aide de facteurs de production acquis sur le marché:",
-        options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
-        chapter: "ch3"
-    },
-    {
-        question: "La production hybride se fait par trois sous-systèmes : discontinue en amont de la chaîne de production, automatique dans la chaîne de production et discontinue en aval de la chaîne de production:",
-        options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
-        chapter: "ch3"
-    },
-    {
-        question: "Le mode de production désigne la façon dont les différents facteurs de production sont organisés pour réaliser un produit ou un service:",
-        options: ["Vrai", "Faux"],
-        answers: ["Vrai"],
-        chapter: "ch3"
     },
     {
         question: "Le déclenchement de l’étape suivante dans la production à flux poussés se fait par la disponibilité du produit en amont:",
@@ -1625,7 +1583,7 @@ export const questions_FR = [
             "FIFO",
             "LIFO",
             "CMUP",
-            "Priorité"
+            "PRIO"
         ],
         answers: ["FIFO", "LIFO", "CMUP"],
         chapter: "ch3"
@@ -1657,5 +1615,119 @@ export const questions_FR = [
         options: ["Vrai", "Faux"],
         answers: ["Faux"],
         chapter: "ch4"
+    },
+    {
+        question: "Le Kaizen est un terme japonais signifiant fiche ou étiquette:",
+        options: ["Vrai", "Faux"],
+        answers: ["Faux"],
+        chapter: "ch4"
+    },
+    {
+        question: "Depuis le début de 20ème siècle le facteur humain est considéré comme créateur de valeur ajoutée pour l’entreprise:",
+        options: ["Vrai", "Faux"],
+        answers: ["Faux"],
+        chapter: "ch3"
+    },
+    {
+        question: "La finance publique s’intéresse au financement et au budget de l’état:",
+        options: ["Vrai", "Faux"],
+        answers: ["Vrai"],
+        chapter: "ch4"
+    },
+    {
+        question: "Font partie des objectifs de la fonction production:",
+        options: [
+            "L’optimisation des achats",
+            "L’augmentation de la productivité",
+            "La diminution des frais généraux",
+            "Toutes les réponses"
+        ],
+        answers: ["Toutes les réponses"],
+        chapter: "ch3"
+    },
+    {
+        question: "Type de fabrication qui concerne les produits peu coûteux ou d’usage général qui sont fabriqués en grande quantité:",
+        options: [
+            "La fabrication pour stockage",
+            "La fabrication pour commande",
+            "La fabrication mixte",
+            "Aucune réponse"
+        ],
+        answers: ["La fabrication pour stockage"],
+        chapter: "ch3"
+    },
+    {
+        question: "Dans une production de type «Flow-Shop», l’élaboration du produit entraîne une utilisation des postes de charge dans un ordre variable:",
+        options: ["Vrai", "Faux"],
+        answers: ["Faux"],
+        chapter: "ch3"
+    },
+    {
+        question: "Dans la production unitaire, des produits standards sont fabriqués en très grande quantité, nécessitant l’utilisation d’un outil de production spécialisé:",
+        options: ["Vrai", "Faux"],
+        answers: ["Faux"],
+        chapter: "ch3"
+    },
+    {
+        question: "Le pilotage de la production a pour objet d’assurer le pilotage des approvisionnements en articles achetés ou fabriqués:",
+        options: ["Vrai", "Faux"],
+        answers: ["Faux"],
+        chapter: "ch3"
+    },
+    {
+        question: "Font partie des objectifs de l’approvisionnement:",
+        options: [
+            "Assurer la sécurité et la régularité des approvisionnements",
+            "Diminuer le poids des en-cours",
+            "Améliorer le rapport Qualité/Prix des produits achetés",
+            "Toutes les réponses"
+        ],
+        answers: ["Assurer la sécurité et la régularité des approvisionnements", "Améliorer le rapport Qualité/Prix des produits achetés"],
+        chapter: "ch3"
+    },
+    {
+        question: "Le cycle qui comprend toutes les opérations relatives à la production et à la vente des produits ou services de l’entreprise est le:",
+        options: [
+            "Cycle de financement",
+            "Cycle d’exploitation",
+            "Cycle d’investissement",
+            "Aucune réponse",
+            "Toutes les réponses"
+        ],
+        answers: ["Cycle d’exploitation"],
+        chapter: "ch4"
+    },
+    {
+        question: "Font partie des outils de gestion de production:",
+        options: [
+            "Pareto",
+            "ABC",
+            "Toutes les réponses",
+            "PDP",
+            "Aucune réponse"
+        ],
+        answers: ["Aucune réponse"],
+        chapter: "ch3"
     }
 ];
+
+export function findRepeatedQuestions(questions) {
+    const questionCount = {};
+    const repeatedQuestions = [];
+
+    questions.forEach((item) => {
+        const questionText = item.question;
+        questionCount[questionText] = (questionCount[questionText] || 0) + 1;
+    });
+    for (const question in questionCount) {
+        if (questionCount[question] > 1) {
+            repeatedQuestions.push(question);
+        }
+    }
+    if (repeatedQuestions.length > 0) {
+        console.log("Repeated questions:");
+        repeatedQuestions.forEach((question) => console.log(question));
+    } else {
+        console.log("No repeated questions found.");
+    }
+}
