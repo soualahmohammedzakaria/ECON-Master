@@ -4,6 +4,7 @@ import Description from '../components/home/Description/Description';
 import Courses from '../components/home/Courses/Courses';
 import Videos from '../components/home/Videos/Videos';
 import Tests from '../components/home/Tests/Tests';
+import QnA from '../components/home/QnA/QnA';
 import Footer from '../components/general/Footer/Footer';
 
 export default function Home() {
@@ -23,6 +24,9 @@ export default function Home() {
 
       {/* Exam Tests Section */}
       <Tests />
+
+      {/* Q&A Section */}
+      <QnA />
 
       {/* Footer */}
       <Footer />

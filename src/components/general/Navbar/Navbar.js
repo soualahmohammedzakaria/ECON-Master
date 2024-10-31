@@ -44,6 +44,11 @@ export default function Navbar() {
                         </HashLink>
                     </li>
                     <li>
+                        <HashLink smooth to="/#qna" scroll={scrollWithOffset}>
+                            Q&A
+                        </HashLink>
+                    </li>
+                    <li>
                         <button className="contribute-button">Contribute</button>
                     </li>
                 </ul>
@@ -77,6 +82,11 @@ export default function Navbar() {
                             <li>
                                 <HashLink smooth to="/#tests" scroll={scrollWithOffset}>
                                     Exam Tests
+                                </HashLink>
+                            </li>
+                            <li>
+                                <HashLink smooth to="/#qna" scroll={scrollWithOffset}>
+                                    Q&A
                                 </HashLink>
                             </li>
                             <li>
