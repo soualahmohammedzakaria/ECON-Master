@@ -9,50 +9,73 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(time * 60); // Convert minutes to seconds
   const [grade, setGrade] = useState(0);
-  const [focusTopics, setFocusTopics] = useState(["Topic 1", "Topic 2", "Topic 3"]);
+  const [focusTopics, setFocusTopics] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isStartModalOpen, setIsStartModalOpen] = useState(true);
   const [isGradeModalOpen, setIsGradeModalOpen] = useState(false);
 
-  // Memoize chaptersArray to avoid recomputation
   const chaptersArray = useMemo(() => chapters.split(',').map(ch => ch.trim()), [chapters]);
-
-  // Ref to store the initial set of questions so they don't change on re-render
   const examQuestionsRef = useRef([]);
 
-  // Round to the nearest 0.25
-  const roundToNearestQuarter = (num) => {
-    return Math.round(num * 4) / 4;
-  };
+  const roundToNearestQuarter = (num) => Math.round(num * 4) / 4;
 
-  // Calculate grade based on selected answers
+  // Generates top 5 focus topics based on incorrect or unanswered questions
+  const generateFocusTopics = useCallback(() => {
+    const topicFrequency = {};
+
+    examQuestionsRef.current.forEach((question, index) => {
+      const correctAnswers = question.answers;
+      const selected = selectedAnswers[index] || [];
+      const isIncorrectOrUnanswered = selected.some(ans => !correctAnswers.includes(ans)) || selected.length === 0;
+
+      // Calculate the question grade
+      const portionPerCorrectAnswer = 1 / correctAnswers.length;
+      let questionGrade = selected.reduce((acc, answer) => (
+        acc + (correctAnswers.includes(answer) ? portionPerCorrectAnswer : -portionPerCorrectAnswer)
+      ), 0);
+
+      if (questionGrade < 0) questionGrade = 0; // Ensure non-negative grade
+
+      // Initialize topic frequency count
+      const topic = question.topic;
+      if (!topicFrequency[topic]) topicFrequency[topic] = 0;
+
+      // Increment if incorrect or unanswered, plus extra for low grade
+      if (isIncorrectOrUnanswered) topicFrequency[topic] += 1;
+      if (questionGrade < 0.5) topicFrequency[topic] += 1.25;
+    });
+
+    const sortedTopics = Object.entries(topicFrequency)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(entry => entry[0]);
+
+    setFocusTopics(sortedTopics);
+  }, [selectedAnswers]);
+
+  // Calculate and submit the grade
   const handleSubmit = useCallback(() => {
     setIsSubmitted(true);
     let totalGrade = 0;
+
     examQuestionsRef.current.forEach((question, index) => {
       const correctAnswers = question.answers;
-      const selected = selectedAnswers[index];
-  
+      const selected = selectedAnswers[index] || [];
       const portionPerCorrectAnswer = 1 / correctAnswers.length;
-      let questionGrade = 0;
-  
-      selected.forEach(answerText => {
-        if (correctAnswers.includes(answerText)) {
-          questionGrade += portionPerCorrectAnswer;
-        } else {
-          questionGrade -= portionPerCorrectAnswer;
-        }
-      });
-  
+      let questionGrade = selected.reduce((acc, answer) => (
+        acc + (correctAnswers.includes(answer) ? portionPerCorrectAnswer : -portionPerCorrectAnswer)
+      ), 0);
+
       if (questionGrade < 0) questionGrade = 0;
       totalGrade += questionGrade;
     });
-    
+
     const gradeOutOf20 = (totalGrade / examQuestionsRef.current.length) * 20;
-    const roundedGrade = roundToNearestQuarter(gradeOutOf20);
-    setGrade(roundedGrade);
+    setGrade(roundToNearestQuarter(gradeOutOf20));
+
+    generateFocusTopics();
     setIsGradeModalOpen(true);
-  }, [selectedAnswers]);
+  }, [generateFocusTopics, selectedAnswers]);
 
   // Start the timer only after the modal is closed
   useEffect(() => {
@@ -70,32 +93,30 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       const filteredQuestions = questions_FR.filter(q => chaptersArray.includes(q.chapter));
       const questionsPerChapter = Math.ceil(nbqsts / chaptersArray.length);
 
-      // Group questions by chapter
+      // Group and select questions evenly from each chapter
       const questionsByChapter = chaptersArray.reduce((acc, chapter) => {
         acc[chapter] = filteredQuestions
           .filter(q => q.chapter === chapter)
-          .sort(() => 0.5 - Math.random()); // Randomize order of chapter questions
+          .sort(() => 0.5 - Math.random());
         return acc;
       }, {});
 
-      // Select questions evenly from each chapter
       const selectedQuestions = [];
       chaptersArray.forEach(chapter => {
         const chapterQuestions = questionsByChapter[chapter] || [];
         const numberToSelect = Math.min(questionsPerChapter, chapterQuestions.length);
-        const randomQuestions = chapterQuestions.slice(0, numberToSelect);
-        selectedQuestions.push(...randomQuestions);
+        selectedQuestions.push(...chapterQuestions.slice(0, numberToSelect));
       });
 
-      // Shuffle the order of selected questions and each question's options
+      // Shuffle selected questions and options
       examQuestionsRef.current = selectedQuestions
         .sort(() => 0.5 - Math.random())
         .map(question => ({
           ...question,
-          options: question.options.sort(() => 0.5 - Math.random()), // Shuffle options
+          options: question.options.sort(() => 0.5 - Math.random()),
         }));
 
-      setSelectedAnswers(Array(examQuestionsRef.current.length).fill([])); // Initialize selected answers
+      setSelectedAnswers(Array(examQuestionsRef.current.length).fill([]));
     }
   }, [chaptersArray, nbqsts]);
 
@@ -110,12 +131,9 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       setSelectedAnswers(prevAnswers => {
         const updatedAnswers = prevAnswers.map((answers, idx) => {
           if (idx === questionIndex) {
-            // Toggle selection for the specific answer text
-            if (answers.includes(answerText)) {
-              return answers.filter(ans => ans !== answerText); // Deselect answer if already selected
-            } else {
-              return [...answers, answerText]; // Select the new answer text
-            }
+            return answers.includes(answerText)
+              ? answers.filter(ans => ans !== answerText)
+              : [...answers, answerText];
           }
           return answers;
         });
@@ -182,7 +200,7 @@ const ExamSheet = ({ chapters, time, test, nbqsts }) => {
       {isSubmitted && (
         <div className="grade-display">
           <h3>Your grade is: {grade}/20</h3>
-          <p>You should focus on the following topics: <b>{focusTopics.join(", ")}</b></p>
+          <p>You should focus on the following topics (sorted from the most to the least important): <b>{focusTopics.join(", ")}</b></p>
         </div>
       )}
     </div>

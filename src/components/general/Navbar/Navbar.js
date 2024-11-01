@@ -49,7 +49,7 @@ export default function Navbar() {
                         </HashLink>
                     </li>
                     <li>
-                        <button className="contribute-button">Contribute</button>
+                        <button className="contribute-button" onClick={() => window.open("https://forms.gle/bLa6J1XaLdV3KETy6", '_blank')}>Contribute</button>
                     </li>
                 </ul>
 
@@ -90,7 +90,7 @@ export default function Navbar() {
                                 </HashLink>
                             </li>
                             <li>
-                                <button className="contribute-button">Contribute</button>
+                                <button className="contribute-button" onClick={() => window.open("https://forms.gle/bLa6J1XaLdV3KETy6", '_blank')}>Contribute</button>
                             </li>
                         </ul>
                     </motion.div>
