@@ -2,7 +2,7 @@
 
 ECON Master is a comprehensive platform designed to support 2CP Economics students at ESI. It offers a range of resources, including course materials, video lectures, summaries, and exam practice tests, all aimed at helping students succeed in their studies.
 
-![Home](.githubutils/home.png)
+![Home](.githubutils/Home.png)
 ![Courses](.githubutils/Courses.png)
 ![Exams](.githubutils/Exams.png)
 ![ExamSheet](.githubutils/ExamSheet.png)
