@@ -1,7 +1,7 @@
 export const questionsAndAnswers = [
     {
       question: "What is the purpose of this website?",
-      answer: "This site is designed to help 2CP students excel in the Economics class by providing them with resources such as courses, videos, and exam tests.",
+      answer: "This site is designed to help 2CP students excel in the Economics class by providing them with resources such as courses, videos and exam tests.",
     },
     {
       question: "How are grades calculated on the different tests?",
