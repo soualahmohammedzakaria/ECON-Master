@@ -12,6 +12,10 @@
 }
 
 .course-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--primary-color);
     color: var(--white-color);
     padding: 1.5rem;
@@ -62,7 +66,7 @@
     font-weight: 600;
     transition: background-color 0.3s ease;
     font-family: var(--font-family);
-    width: calc(50% - 0.25rem); /* Each button is half the width minus half the gap */
+    width: calc(50% - 0.25rem);
 }
 
 .course-button:hover, .summary-button:hover {

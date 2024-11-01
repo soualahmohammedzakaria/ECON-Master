@@ -28,6 +28,13 @@
   font-weight: bold;
   color: var(--white-color);
 }
+
+@media screen and (max-width: 768px) {
+  .site-name {
+    font-size: 1.3rem;
+  }
+  
+}
   
 .nav-links {
   list-style: none;

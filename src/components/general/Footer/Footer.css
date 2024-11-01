@@ -22,6 +22,12 @@
     height: auto;
 }
 
+@media screen and (max-width: 400px) {
+    .footer-logo {
+        width: 30px;
+    }
+}
+
 .footer-link {
     color: var(--white-color);
     text-decoration: underline;
