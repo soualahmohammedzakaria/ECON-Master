@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 export default function Courses() {
   const navigate = useNavigate();
   const handleTestSelection = (chapter_number) => () => {
-    if(chapter_number === 1) navigate(`/exam/ch1/25/Chapter One Test/30`);
-    if(chapter_number === 2) navigate(`/exam/ch2/25/Chapter Two Test/30`);
-    if(chapter_number === 3) navigate(`/exam/ch3/15/Chapter Three Test/20`);
-    if(chapter_number === 4) navigate(`/exam/ch4/15/Chapter Four Test/20`);
+    if(chapter_number === 1) navigate(`/exam/ch1/20/Chapter One Test/30`);
+    if(chapter_number === 2) navigate(`/exam/ch2/20/Chapter Two Test/30`);
+    if(chapter_number === 3) navigate(`/exam/ch3/12/Chapter Three Test/20`);
+    if(chapter_number === 4) navigate(`/exam/ch4/12/Chapter Four Test/20`);
   };
 
   return (

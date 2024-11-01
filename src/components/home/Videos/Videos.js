@@ -19,10 +19,10 @@ export default function Videos() {
                 <button
                     key={index}
                     className="video-link-button"
-                    onClick={() => window.open(video.link, '_blank')}
+                    onClick={() => window.open(video, '_blank')}
                 >
                     <MdSlowMotionVideo size={22} /> 
-                    Course {index + 1} ({video.professor})
+                    Course {index + 1} Video
                 </button>
             ))}
             <h4 className="video-section-title" style={{marginTop: "0.7rem"}}>Tutorials</h4>
@@ -30,10 +30,10 @@ export default function Videos() {
                 <button
                     key={index}
                     className="video-link-button"
-                    onClick={() => window.open(video.link, '_blank')}
+                    onClick={() => window.open(video, '_blank')}
                 >
                     <MdSlowMotionVideo size={22} />
-                    Tutorial {index + 1} ({video.professor})
+                    Tutorial {index + 1} Video
                 </button>
             ))}
           </div>
