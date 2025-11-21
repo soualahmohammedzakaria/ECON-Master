@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ECON-Master/static/css/main.2031884b.css",
-    "main.js": "/ECON-Master/static/js/main.444cca35.js",
+    "main.css": "/ECON-Master/static/css/main.1cd08584.css",
+    "main.js": "/ECON-Master/static/js/main.0091c644.js",
     "static/media/econ-video.mp4": "/ECON-Master/static/media/econ-video.79bf9f6c889494c3859d.mp4",
     "static/media/ECON-Master.png": "/ECON-Master/static/media/ECON-Master.32f13642e9d2164d2a69.png",
     "index.html": "/ECON-Master/index.html",
-    "main.2031884b.css.map": "/ECON-Master/static/css/main.2031884b.css.map",
-    "main.444cca35.js.map": "/ECON-Master/static/js/main.444cca35.js.map"
+    "main.1cd08584.css.map": "/ECON-Master/static/css/main.1cd08584.css.map",
+    "main.0091c644.js.map": "/ECON-Master/static/js/main.0091c644.js.map"
   },
   "entrypoints": [
-    "static/css/main.2031884b.css",
-    "static/js/main.444cca35.js"
+    "static/css/main.1cd08584.css",
+    "static/js/main.0091c644.js"
   ]
 }
