@@ -40,11 +40,14 @@ export default function QnA() {
                 >
                     {`${item.answer} `}
                     {item.link && (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" style={{
-                            color: "var(--primary-color)",
-                            textDecoration: "none",
-                            fontWeight: "700",
-                        }}>Link here</a>
+                        <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="item-link"
+                        >
+                            Link here
+                        </a>
                     )}
                 </motion.div>
             )}
